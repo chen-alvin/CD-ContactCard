@@ -14,8 +14,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <style>
         .cc{
-            border:1px solid black;
+            border:2px solid black;
             padding:10px 0px;
+            margin-top:10px;
+            max-width:300px;
+        }
+        .blah{
+            display:none;
         }
     </style>
 		<script>
@@ -24,37 +29,47 @@
 					console.log($('#first').val());
 					console.log($('#last').val());
 					console.log($('#desc').val());
+          $('#cardcol').append('<div class="cc"><h2>' + $('#first').val() +' '+ $('#last').val() + '</h2><p class="descp">Click for description!</p><p class="blah">' + $('#desc').val() + '</p></div>');
+          document.getElementById('userform').reset();  
 					return false;
 				});
+          $(document).on('click','.descp',function(){
+             $(this).hide();
+              $(this).siblings().show();
+          });
 			});
 		</script>
 
 </head>
 
 <body>
-    <div class="col-md-6 col-xs-12 text-left" style="border:1px solid red">
+    
+    <div class="col-md-10 col-md-offset-1">
+        <h1>Contact Card</h1>
+    <div class="col-md-4 col-xs-12 text-left">
         <form id="userform">
             <label>First name:</label>
             <input id="first" type=text><br>
             <label>Last name:</label>
             <input id="last" type=text><br>
+            <label>Description:</label>
             <textarea id="desc" form="userform" placeholder="Description" rows="4" cols="30"></textarea><br>
             <input type=submit value="Add User">
 				</form>
     </div>
 
-    <div class="col-md-6 col-xs-12 text-center" style="border:1px solid blue">
-        some content
-			  <div class="col-md-10 col-md-offset-1" style="border:1px solid green">
+    <div class="col-md-6 col-xs-12 text-center">
+			  <div id="cardcol" class="col-md-10 col-md-offset-1" >
             <div class="cc">                
-                <ul>
-                    <li>First</li>
-                    <li>Last</li>
-                    <li>Desc</li>
-                </ul>
+                <h2>Example Card</h2>
+                <p class="descp">Click for description!</p>
+                <p class="blah">Description!</p>
             </div>
+            
         </div>
     </div>
+            </div>
+
 </body>
 
 </html>
