@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Card jQuery</title>
+    <!-- jQuery from Google Hosted Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style>
+        .cc{
+            border:2px solid black;
+            padding:10px 0px;
+            margin-top:10px;
+            max-width:300px;
+        }
+        .blah{
+            display:none;
+        }
+    </style>
+		<script>
+			$(document).ready(function(){
+				$('form').submit(function(){
+					console.log($('#first').val());
+					console.log($('#last').val());
+					console.log($('#desc').val());
+          $('#cardcol').append('<div class="cc"><h2>' + $('#first').val() +' '+ $('#last').val() + '</h2><p class="descp">Click for description!</p><p class="blah">' + $('#desc').val() + '</p></div>');
+          document.getElementById('userform').reset();  
+					return false;
+				});
+          $(document).on('click','.descp',function(){
+             $(this).hide();
+              $(this).siblings().show();
+          });
+			});
+		</script>
+
+</head>
+
+<body>
+    
+    <div class="col-md-10 col-md-offset-1">
+        <h1>Contact Card</h1>
+    <div class="col-md-4 col-xs-12 text-left">
+        <form id="userform">
+            <label>First name:</label>
+            <input id="first" type=text><br>
+            <label>Last name:</label>
+            <input id="last" type=text><br>
+            <label>Description:</label>
+            <textarea id="desc" form="userform" placeholder="Description" rows="4" cols="30"></textarea><br>
+            <input type=submit value="Add User">
+				</form>
+    </div>
+
+    <div class="col-md-6 col-xs-12 text-center">
+			  <div id="cardcol" class="col-md-10 col-md-offset-1" >
+            <div class="cc">                
+                <h2>Example Card</h2>
+                <p class="descp">Click for description!</p>
+                <p class="blah">Description!</p>
+            </div>
+            
+        </div>
+    </div>
+            </div>
+
+</body>
+
+</html>
